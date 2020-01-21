@@ -4,7 +4,7 @@
 
     <groupId>mvnpoc</groupId>
     <artifactId>ensayorepo</artifactId>
-    <version>$(artifact_version)</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Spring Boot Blank Project (from https://github.com/making/spring-boot-blank)</name>
