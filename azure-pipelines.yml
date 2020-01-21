@@ -14,9 +14,6 @@ steps:
   inputs:
     SonarQube: 'MicroServiciosMP'
     scannerMode: 'Other'
-- task: SonarQubePublish@4
-  inputs:
-    pollingTimeoutSec: '300'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -30,15 +27,8 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: true
     sqMavenPluginVersionChoice: 'latest'
-- task: CopyFiles@2
+- task: PublishPipelineArtifact@1
   inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '**/*.jar'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-    CleanTargetFolder: true
-    OverWrite: true
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: '*.jar'
+    publishLocation: 'pipeline'
