@@ -14,10 +14,26 @@ steps:
   inputs:
     SonarQube: 'MicroServiciosMP'
     scannerMode: 'Other'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      echo 'accessing to downloaded repo... '
+      cd /home/vsts/work/1/s/
+      echo 'showing all downloaded repo files... '
+      ls -ltr
+      echo 'updating the project version... '
+      /usr/share/apache-maven-3.6.3/bin/mvn versions:set -DnewVersion=$(artifact_version)
+      echo 'checking the changes... '
+      ls -ltr
+      echo 'updated pom.xml content'
+      cat pom.xml
+      echo 'FINISH: updated pom.xml'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'package set -DnewVersion=$(artifact_version)'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
