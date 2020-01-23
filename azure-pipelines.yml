@@ -21,7 +21,8 @@ steps:
       # Write your commands here
       echo '### START: change the project version on pom.xml ###'
       echo 'Accessing to downloaded repo... '
-      cd /home/vsts/work/1/s/
+      cd $(Build.Repository.LocalPath)
+      pwd
       echo 'Showing all downloaded repo files... '
       ls -ltr
       echo 'Updating the project version... '
