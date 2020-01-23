@@ -19,18 +19,18 @@ steps:
     targetType: 'inline'
     script: |
       # Write your commands here
-      
-      echo 'accessing to downloaded repo... '
+      echo '### START: change the project version on pom.xml ###'
+      echo 'Accessing to downloaded repo... '
       cd /home/vsts/work/1/s/
-      echo 'showing all downloaded repo files... '
+      echo 'Showing all downloaded repo files... '
       ls -ltr
-      echo 'updating the project version... '
+      echo 'Updating the project version... '
       /usr/share/apache-maven-3.6.3/bin/mvn versions:set -DnewVersion=$(artifact_version)
-      echo 'checking the changes... '
+      echo 'Checking the changes... '
       ls -ltr
-      echo 'updated pom.xml content'
+      echo 'Updated pom.xml content'
       cat pom.xml
-      echo 'FINISH: updated pom.xml'
+      echo '### FINISH: updated pom.xml ###'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
