@@ -15,7 +15,7 @@ public class HelloController {
 
     @RequestMapping("/")
     String hello() {
-        return "Hello World!! from ChileCompra";
+        return "GREETINGS FOR EVERYONE!!";
     }
 
     @Data
