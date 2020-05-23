@@ -18,6 +18,11 @@ public class HelloController {
         return "GREETINGS FOR EVERYONE!!";
     }
 
+    @RequestMapping("/hello2")
+    String hello2() {
+        return "GREETINGS FOR ME!!";
+    }
+
     @Data
     static class Result {
         private final int left;
